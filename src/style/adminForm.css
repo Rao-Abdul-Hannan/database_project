@@ -1,0 +1,38 @@
+.login-form {
+    border: 2px solid black;
+    margin: 8%;
+    padding: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 12px;
+}
+
+.new-student {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-styling {
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 5px;
+    background-color: #0d4877;
+    color: white;
+    font-weight: bold;
+}
+
+.form-control {
+    width: 120%;
+}
+
+.signUp-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.already-text-styling {
+    text-decoration: none;
+}
