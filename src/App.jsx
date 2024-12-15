@@ -24,6 +24,7 @@ import StudentEventData from "./pages/GetData/StudentEventData"
 import StudentExam from "./pages/GetData/StudentExam"
 import SubjectData from "./pages/GetData/SubjectData"
 import SectionData from "./pages/GetData/SectionData"
+import SearchStudent from "./views/forms/SearchStudent"
 
 function App() {
 
@@ -32,10 +33,11 @@ function App() {
       <NavBar />
       <Routes>
         <Route path='/' element={<AdminSignUpForm />} />
-        <Route path='/login-form' element={<AdminLoginForm />} />
+        <Route path='/auth/admin-login' element={<AdminLoginForm />} />
         <Route path="/home" element={<Home />} />
         <Route path='/faculty-data' element={<FacultyData />} />
         <Route path='/monthly-fee' element={<MonthlyFeeData />} />
+        <Route path="/search-student" element={<SearchStudent />} />
         <Route path='/specific-student-data' element={<SpecificStudentData />} />
         <Route path='/specific-teacher-data' element={<SpecificTeacherData />} />
         <Route path='/student-data' element={<StudentData />} />

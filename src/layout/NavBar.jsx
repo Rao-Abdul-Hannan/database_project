@@ -82,7 +82,7 @@ const NavBar = () => {
 									<p className='page-links-data px-3'>Monthly Fee</p>
 								</Link>
 								<Link
-									to="/specific-student-data"
+									to="/search-student"
 									className="page-links"
 								>
 									<p className='page-links-data px-3'>Specific Student's Data</p>

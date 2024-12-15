@@ -6,7 +6,7 @@ import adminPicture from "../assets/Images/umairbabar.png";
 const Home = () => {
 	const navigate = useNavigate();
 	const HandleSubmit = (e) => {
-		navigate("/");
+		navigate("/auth/admin-login");
 	};
 	return (
 		<>

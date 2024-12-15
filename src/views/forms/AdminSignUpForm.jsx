@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import '../../style/adminForm.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const AdminSignUpForm = () => {
+    const navigate = useNavigate();
     const [signUp, setSignUp] = useState({
         name: '',
         email: '',
@@ -23,6 +24,8 @@ const AdminSignUpForm = () => {
             email: '',
             password: '',
         })
+
+        navigate("/auth/admin-login");
     }
     return (
         <>

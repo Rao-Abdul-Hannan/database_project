@@ -1,7 +1,11 @@
-import React from "react";
+import React from 'react'
 
 const SubjectData = () => {
-	return <div>SubjectData</div>;
-};
+  return (
+	<>
+		
+	</>
+  )
+}
 
-export default SubjectData;
+export default SubjectData

@@ -19,21 +19,23 @@
 
 .btn {    
     background-color: rgb(44, 115, 174) !important;
+    color: #f9f9f9;
 }
 
 .animated-line {
     width:500px;
+    font-family: "Arial", sans-serif;
 }
 
 .individual-letter {
-    color: rgba(255,51,51,0.9);
+    color: #f9f9f9;
     font-size: larger;
     font-weight: bolder;
 }
 
 .page-links {
     text-decoration: none;
-    color: rgba(255,51,51,0.9);
+    color: #f9f9f9;
 }
 
 .dropdown-menu {
