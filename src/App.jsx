@@ -4,16 +4,26 @@ import Footer from "./layout/Footer"
 import { Route, Routes } from "react-router-dom"
 import Home from "./pages/Home"
 import ErrorPage from "./pages/ErrorPage"
-import FacultyData from "./pages/FacultyData"
-import ClassData from "./pages/ClassData"
-import FeeVoucher from "./pages/FeeVoucher"
-import SpecificStudentData from "./pages/SpecificStudentData"
-import SpecificTeacherData from "./pages/SpecificTeacherData"
-import StudentData from "./pages/StudentData"
-import StudentMarksheet from "./pages/StudentMarksheet"
-import TakeAttendance from "./pages/TakeAttendance"
+import FacultyData from "./pages/GetData/FacultyData"
+import ClassRoomData from "./pages/GetData/ClassRoomData"
+import SpecificStudentData from "./pages/GetData/SpecificStudentData"
+import SpecificTeacherData from "./pages/GetData/SpecificTeacherData"
+import StudentData from "./pages/GetData/StudentData"
+import StudentMarksheet from "./pages/GetData/StudentMarksheet"
 import AdminLoginForm from "./views/forms/adminLoginForm"
 import AdminSignUpForm from "./views/forms/adminSignUpForm"
+import MonthlyFeeData from "./pages/GetData/MonthlyFeeData"
+import AttendanceData from "./pages/GetData/AttendanceData"
+import EventsData from "./pages/GetData/EventsData"
+import ExamData from "./pages/GetData/ExamData"
+import ExamResultData from "./pages/GetData/ExamResultData"
+import ParentData from "./pages/GetData/ParentData"
+import PeriodData from "./pages/GetData/PeriodData"
+import RoomData from "./pages/GetData/RoomData"
+import StudentEventData from "./pages/GetData/StudentEventData"
+import StudentExam from "./pages/GetData/StudentExam"
+import SubjectData from "./pages/GetData/SubjectData"
+import SectionData from "./pages/GetData/SectionData"
 
 function App() {
 
@@ -25,13 +35,23 @@ function App() {
         <Route path='/login-form' element={<AdminLoginForm />} />
         <Route path="/home" element={<Home />} />
         <Route path='/faculty-data' element={<FacultyData />} />
-        <Route path='/class-data' element={<ClassData />} />
-        <Route path='/fee-voucher' element={<FeeVoucher />} />
+        <Route path='/monthly-fee' element={<MonthlyFeeData />} />
         <Route path='/specific-student-data' element={<SpecificStudentData />} />
         <Route path='/specific-teacher-data' element={<SpecificTeacherData />} />
         <Route path='/student-data' element={<StudentData />} />
         <Route path='/student-marksheet' element={<StudentMarksheet />} />
-        <Route path='/take-attendance' element={<TakeAttendance />} />
+        <Route path='/attendance-data' element={<AttendanceData />} />
+        <Route path="/classroom-data" element={<ClassRoomData />} />
+        <Route path="/events-data" element={<EventsData />} />
+        <Route path="/exam-data" element={<ExamData />} />
+        <Route path="/exam-result-data" element={<ExamResultData />} />
+        <Route path="/parent-data" element={<ParentData />} />
+        <Route path="/period-data" element={<PeriodData />} />
+        <Route path="/room-data" element={<RoomData />} />
+        <Route path="/section-data" element={<SectionData />} />
+        <Route path="/student-event-data" element={<StudentEventData />} />
+        <Route path="student-exam" element={<StudentExam />} />
+        <Route path="/subject-data" element={<SubjectData />} />
         <Route path='*' element={<ErrorPage />} />
       </Routes>
       <Footer />

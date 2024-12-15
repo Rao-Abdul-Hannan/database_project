@@ -7,26 +7,6 @@
     width: 100%;
 }
 
-.side-bar {
-    background-color: #0d4877 !important;
-    border-bottom: 2px solid whitesmoke;
-    border-top: 2px solid whitesmoke;
-    margin-left: 2px;
-    width: 25%;
-}
-
-.side-bar-content {
-    padding: 10px;  
-    font-size: large;
-    font-weight: bold;
-    text-align: center;
-}
-
-.page-links {
-    text-decoration: none;
-    color: rgba(255,51,51,0.9);
-}
-
 .fields {
     display: flex;
 }
@@ -44,6 +24,7 @@
 
 .little-introduction {
     padding: 10px;
+    text-align: center;
 }
 
 .admin-details {
@@ -63,5 +44,5 @@
 }
 
 .logout-button {
-    margin-left: 60px;
+    margin-left: 70vw;
 }

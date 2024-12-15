@@ -8,7 +8,17 @@
 
 .navbar {
     background-color: #0d4877 !important;
-    padding-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-group {
+    margin: 0px 100px;
+}
+
+.btn {    
+    background-color: rgb(44, 115, 174) !important;
 }
 
 .animated-line {
@@ -19,4 +29,13 @@
     color: rgba(255,51,51,0.9);
     font-size: larger;
     font-weight: bolder;
+}
+
+.page-links {
+    text-decoration: none;
+    color: rgba(255,51,51,0.9);
+}
+
+.dropdown-menu {
+    background-color: rgb(44, 115, 174) !important;
 }
