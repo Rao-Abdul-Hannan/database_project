@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from 'react'
-import '../../style/table.css'
-import { endPoints } from '../../constants/urls/urls';
-import getApiService from '../../services/getApiService';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import "../../style/table.css";
+import { endPoints } from "../../constants/urls/urls";
+import getApiService from "../../services/getApiService";
+import { Link } from "react-router-dom";
 
 const FacultyData = () => {
-  const [teachers, setTeachers] = useState([]);
+	const [teachers, setTeachers] = useState([]);
 
-  // const authTokenAdmin = localStorage.getItem("authTokenAdmin");
-  // useEffect(() => {
-  // 	if (!authTokenAdmin) {
-  // 		navigate("/auth/admin-login");
-  // 	}
-  // }, [authTokenAdmin]);
+	// const authTokenAdmin = localStorage.getItem("authTokenAdmin");
+	// useEffect(() => {F
+	// 	if (!authTokenAdmin) {
+	// 		navigate("/auth/admin-login");
+	// 	}
+	// }, [authTokenAdmin]);
 
-  const fetchAllTeachers = async () => {
+	const fetchAllTeachers = async () => {
 		try {
 			// Include the authToken in the request headers
 			// const config = {
@@ -34,12 +34,12 @@ const FacultyData = () => {
 			// Log any errors that occur during the fetch
 			console.log(error);
 		}
-  };
+	};
 
-  useEffect(() => {
+	useEffect(() => {
 		fetchAllTeachers();
-  }, []);
-  return (
+	}, []);
+	return (
 		<>
 			<div className="table-main-body">
 				<div className="students-table-container">
@@ -103,7 +103,7 @@ const FacultyData = () => {
 				</div>
 			</div>
 		</>
-  );
-}
+	);
+};
 
-export default FacultyData
+export default FacultyData;

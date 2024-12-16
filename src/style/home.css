@@ -41,6 +41,13 @@
     background-color: #0d4877;
     color: white;
     font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.button-styling:hover {
+	background-color: #0056b3;
+	transform: scale(1.05);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .logout-button {

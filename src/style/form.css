@@ -1,0 +1,66 @@
+.image-form {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+}
+.img-teacher {
+    width: 15%;
+    margin: 100px 200px 0 0;
+}
+.faculty-form {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	border: 1px solid #ddd;
+	padding: 20px;
+	border-radius: 8px;
+	background-color: #fafafa;
+    width: 80%;
+    margin-left: 30px;
+}
+
+.form-style-container {
+    width: 100%;
+}
+
+.form-row {
+	border-bottom: 1px dashed #ddd;
+	padding: 10px 0;
+}
+
+.form-row label {
+	font-weight: bold;
+	color: #333;
+    padding: 0px 90px;
+}
+
+.form-row span {
+	color: #555;
+}
+
+.goback-button {
+	text-align: center;
+	margin-top: 20px;
+}
+
+.goback-button .button-styling {
+	background-color: #007bff;
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.goback-button .button-styling:hover {
+	background-color: #0056b3;
+	transform: scale(1.05);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.go-home-styling {
+	text-decoration: none;
+	color: white;
+	font-weight: bold;
+}

@@ -18,8 +18,8 @@
 }
 
 .btn {    
-    background-color: rgb(44, 115, 174) !important;
     color: #f9f9f9;
+    background-color: #007bff !important;
 }
 
 .animated-line {
@@ -36,6 +36,10 @@
 .page-links {
     text-decoration: none;
     color: #f9f9f9;
+}
+.page-links-data:hover {
+	transform: scale(1.05);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .dropdown-menu {

@@ -15,12 +15,13 @@
 }
 
 .button-styling {
-    border: 2px solid black;
-    border-radius: 10px;
-    padding: 5px;
-    background-color: #0d4877;
-    color: white;
-    font-weight: bold;
+    background-color: #007bff;
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .form-control {
@@ -35,4 +36,10 @@
 
 .already-text-styling {
     text-decoration: none;
+}
+
+.button-styling:hover {
+	background-color: #0056b3;
+	transform: scale(1.05);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }

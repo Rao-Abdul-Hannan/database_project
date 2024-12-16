@@ -1,9 +1,93 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
+import { endPoints } from "../../constants/urls/urls";
+import getApiService from "../../services/getApiService";
+import { Link } from "react-router-dom";
 
 const ClassRoomData = () => {
-  return (
-    <div>ClassRoomData</div>
-  )
-}
+	const [classRooms, setClassRooms] = useState([]);
 
-export default ClassRoomData
+	// const authTokenAdmin = localStorage.getItem("authTokenAdmin");
+	// useEffect(() => {F
+	// 	if (!authTokenAdmin) {
+	// 		navigate("/auth/admin-login");
+	// 	}
+	// }, [authTokenAdmin]);
+
+	const fetchClassRoomData = async () => {
+		try {
+			// Include the authToken in the request headers
+			// const config = {
+			// 	headers: {
+			// 		Authorization: `Bearer ${authTokenAdmin}`,
+			// 		"Content-Type": "application/json",
+			// 	},
+			// };
+
+			const response = await getApiService(
+				endPoints.CLASSROOM_DATA
+				// config
+			);
+			console.log(response.data);
+			setClassRooms(response.data.data);
+		} catch (error) {
+			// Log any errors that occur during the fetch
+			console.log(error);
+		}
+	};
+
+	useEffect(() => {
+		fetchClassRoomData();
+	}, []);
+	return (
+		<>
+			<div className="table-main-body">
+				<div className="students-table-container">
+					<h2>ClassRoom Data</h2>
+					<table className="students-table">
+						<thead>
+							<tr>
+								<th>Class Room ID</th>
+								<th>Class Name</th>
+								<th>Class Start Date</th>
+								<th>Class End Date</th>
+							</tr>
+						</thead>
+						<tbody>
+							{classRooms.map((classRooms) => (
+								<tr key={classRooms.classroom_id}>
+									<td>{classRooms.classroom_id}</td>
+									<td>{classRooms.class_name}</td>
+									<td>
+										{new Date(
+											classRooms.class_start_date
+										).toLocaleDateString()}
+									</td>{" "}
+									<td>
+										{new Date(
+											classRooms.class_end_date
+										).toLocaleDateString()}
+									</td>{" "}
+								</tr>
+							))}
+						</tbody>
+					</table>
+				</div>
+				<div className="goback-button">
+					<button
+						type="submit"
+						className="form-floating mb-3 button-styling"
+					>
+						<Link
+							to="/home"
+							className="go-home-styling"
+						>
+							Go Home!
+						</Link>
+					</button>
+				</div>
+			</div>
+		</>
+	);
+};
+
+export default ClassRoomData;

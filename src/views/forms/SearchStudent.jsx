@@ -3,24 +3,53 @@ import "../../style/adminForm.css";
 import { useNavigate } from "react-router-dom";
 
 const SearchStudent = () => {
-    const navigate = useNavigate()
-	const [searchStudent, setSearchStudent] = useState({
-		id: ""
+	const navigate = useNavigate();
+	const [search, setSearch] = useState({
+		id: "",
+		category: "",
+		marks: 0
 	});
 
 	const HandleInput = (e) => {
 		const name = e.target.name;
 		const value = e.target.value;
-		setSearchStudent({ ...searchStudent, [name]: value });
+		setSearch({ ...search, [name]: value });
 	};
 
 	const HandleSubmit = async (e) => {
 		e.preventDefault();
-        console.log(searchStudent)
-		setSearchStudent({
-			id: ""
+		const { id } = search;
+		const { category } = search;
+		const { marks } = search;
+
+		setSearch({
+			id: "",
+			category: "",
+			marks: 0,
 		});
-        navigate("/specific-student-data");
+
+		// console.log(category)
+		// console.log(marks)
+		
+		if (category == "student") {
+			navigate(`/specific-student-data/${id}`);
+		} else if (category == "teacher") {
+			navigate(`/specific-teacher-data/${id}`);
+		} else if (category == "transcript") {
+			navigate(`/student-transcript/${id}`);
+		}
+		else if (category == "studentCourses")
+		{
+			navigate(`/student-courses/${id}`);
+		}
+		else if (category == "teachingSections")
+		{
+			navigate(`/teacher-teaching-sections/${id}`);
+		}
+		else if (category == "eventParticipation")
+		{
+			navigate(`/student-participations`);
+		}
 	};
 	return (
 		<>
@@ -30,7 +59,6 @@ const SearchStudent = () => {
 					onSubmit={HandleSubmit}
 					className="login-form py-5"
 				>
-					{/* id start */}
 					<div className="form-floating mb-3 mx-5">
 						<input
 							type="number"
@@ -38,12 +66,47 @@ const SearchStudent = () => {
 							className="form-control"
 							id="floatingInput name"
 							placeholder="1"
-							value={searchStudent.name}
+							value={search.id}
 							onChange={HandleInput}
 						/>
 						<label htmlFor="floatingInput">Id</label>
 					</div>
-					{/* id end */}
+					<div className="form-floating mb-3 mx-5">
+						<select
+							name="category"
+							className="form-control"
+							value={search.category}
+							onChange={HandleInput}
+						>
+							<option value="">Select</option>
+							<option value="student">Student</option>
+							<option value="teacher">Teacher</option>
+							<option value="transcript">Transcript</option>
+							<option value="marksFilter">Marks Filter</option>
+							<option value="studentCourses">
+								Student Courses
+							</option>
+							<option value="eventParticipation">
+								Event Participation
+							</option>
+							<option value="teachingSections">
+								Teacher Teaching Sections
+							</option>
+						</select>
+						<label htmlFor="floatingSelect">Category</label>
+					</div>
+					<div className="form-floating mb-3 mx-5">
+						<input
+							type="number"
+							name="marks"
+							className="form-control"
+							id="floatingInput name"
+							placeholder="1"
+							value={search.marks}
+							onChange={HandleInput}
+						/>
+						<label htmlFor="floatingInput">Marks</label>
+					</div>
 					<div className="signUp-button">
 						<div className="button">
 							<button

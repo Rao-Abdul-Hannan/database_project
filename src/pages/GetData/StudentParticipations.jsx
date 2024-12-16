@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import getApiService from '../../services/getApiService';
 import { endPoints } from '../../constants/urls/urls';
+import getApiService from '../../services/getApiService';
 import { Link } from 'react-router-dom';
 
-const StudentEventData = () => {
-  const [studentEvent, setStudentEvent] = useState([]);
+const StudentParticipations = () => {
+  const [participations, setParticipations] = useState([]);
 
   // const authTokenAdmin = localStorage.getItem("authTokenAdmin");
   // useEffect(() => {F
@@ -13,7 +13,7 @@ const StudentEventData = () => {
   // 	}
   // }, [authTokenAdmin]);
 
-  const fetchStudentEvents = async () => {
+  const fetchAllParticipations = async () => {
 		try {
 			// Include the authToken in the request headers
 			// const config = {
@@ -24,11 +24,11 @@ const StudentEventData = () => {
 			// };
 
 			const response = await getApiService(
-				endPoints.STUDENT_EVENT_DATA
+				endPoints.STUDENT_PARTICIPATION
 				// config
 			);
 			console.log(response.data);
-			setStudentEvent(response.data.data);
+			setParticipations(response.data.data);
 		} catch (error) {
 			// Log any errors that occur during the fetch
 			console.log(error);
@@ -36,33 +36,29 @@ const StudentEventData = () => {
   };
 
   useEffect(() => {
-		fetchStudentEvents();
+		fetchAllParticipations();
   }, []);
   return (
 		<>
 			<div className="table-main-body">
 				<div className="students-table-container">
-					<h2>Faculty Data</h2>
+					<h2>Student Participations</h2>
 					<table className="students-table">
 						<thead>
 							<tr>
-								<th>Student's Event ID</th>
-								<th>Student ID</th>
-								<th>Event ID</th>
-								<th>Registered Date</th>
+								<th>Student Name</th>
+								<th>Address</th>
+								<th>Section</th>
+								<th>Gender</th>
 							</tr>
 						</thead>
 						<tbody>
-							{studentEvent.map((studentEvent) => (
-								<tr key={studentEvent.student_event_id}>
-									<td>{studentEvent.student_event_id}</td>
-									<td>{studentEvent.student_id}</td>
-									<td>{studentEvent.event_id}</td>
-									<td>
-										{new Date(
-											studentEvent.registered_date
-										).toLocaleDateString()}
-									</td>{" "}
+							{participations.map((participations) => (
+								<tr key={participations.student_name}>
+									<td>{participations.student_name}</td>
+									<td>{participations.address}</td>
+									<td>{participations.section}</td>
+									<td>{participations.gender}</td>
 								</tr>
 							))}
 						</tbody>
@@ -86,4 +82,4 @@ const StudentEventData = () => {
   );
 }
 
-export default StudentEventData
+export default StudentParticipations

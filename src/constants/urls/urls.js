@@ -23,6 +23,8 @@ export const endPoints = {
 	TRANSCRIPT: `/transcript`,
 	STUDENT_MARKS_FILTER: `/student-marks-filter`,
 	STUDENT_COURSES: `/student-courses`,
+	STUDENT_PARTICIPATION: `/student-participations`,
+	TEACHER_SECTIONS: `/teacher-teaching-sections`,
 	ADMIN_SIGNUP: `/auth/sign-up`,
 	ADMIN_LOGIN: `/auth/login`
 };

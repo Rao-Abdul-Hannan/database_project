@@ -61,43 +61,33 @@ const NavBar = () => {
 									to="/student-data"
 									className="page-links"
 								>
-									<p className='page-links-data px-3'>All Students' Data</p>
+									<p className="page-links-data px-3">
+										All Students' Data
+									</p>
 								</Link>
 								<Link
 									to="/faculty-data"
 									className="page-links"
 								>
-									<p className='page-links-data px-3'>Faculty Data</p>
-								</Link>
-								<Link
-									to="/student-marksheet"
-									className="page-links"
-								>
-									<p className='page-links-data px-3'>Student Marksheet</p>
-								</Link>
-								<Link
-									to="/monthly-fee"
-									className="page-links"
-								>
-									<p className='page-links-data px-3'>Monthly Fee</p>
+									<p className="page-links-data px-3">
+										Faculty Data
+									</p>
 								</Link>
 								<Link
 									to="/search-student"
 									className="page-links"
 								>
-									<p className='page-links-data px-3'>Specific Student's Data</p>
+									<p className="page-links-data px-3">
+										Specific Student's Data
+									</p>
 								</Link>
 								<Link
-									to="/specific-teacher-data"
+									to="/more-functions"
 									className="page-links"
 								>
-									<p className='page-links-data px-3'>Specific Teacher Data</p>
-								</Link>
-								<Link
-									to="/classroom-data"
-									className="page-links"
-								>
-									<p className='page-links-data px-3'>Class Data</p>
+									<p className="page-links-data px-3">
+										More Functions...
+									</p>
 								</Link>
 							</ul>
 						</div>
