@@ -6,8 +6,7 @@ const SearchStudent = () => {
 	const navigate = useNavigate();
 	const [search, setSearch] = useState({
 		id: "",
-		category: "",
-		marks: 0
+		category: ""
 	});
 
 	const HandleInput = (e) => {
@@ -20,12 +19,10 @@ const SearchStudent = () => {
 		e.preventDefault();
 		const { id } = search;
 		const { category } = search;
-		const { marks } = search;
 
 		setSearch({
 			id: "",
 			category: "",
-			marks: 0,
 		});
 
 		// console.log(category)
@@ -94,18 +91,6 @@ const SearchStudent = () => {
 							</option>
 						</select>
 						<label htmlFor="floatingSelect">Category</label>
-					</div>
-					<div className="form-floating mb-3 mx-5">
-						<input
-							type="number"
-							name="marks"
-							className="form-control"
-							id="floatingInput name"
-							placeholder="1"
-							value={search.marks}
-							onChange={HandleInput}
-						/>
-						<label htmlFor="floatingInput">Marks</label>
 					</div>
 					<div className="signUp-button">
 						<div className="button">

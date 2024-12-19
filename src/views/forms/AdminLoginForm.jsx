@@ -1,12 +1,22 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import '../../style/adminForm.css'
+import postApiService from '../../services/postApiService';
+import { endPoints } from '../../constants/urls/urls';
 
 const AdminLoginForm = () => {
     const navigate = useNavigate();
+
+    let authTokenAdmin = localStorage.getItem("authTokenAdmin");
+	useEffect(() => {
+		if (authTokenAdmin) {
+			navigate("/home");
+		}
+	}, [authTokenAdmin]);
+
     const [login, setLogin] = useState({
         email: '',
-        password: '',
+        password1: '',
     });
 
     const HandleInput = (e) => {
@@ -17,8 +27,25 @@ const AdminLoginForm = () => {
 
     const HandleSubmit = async (e) => {
         e.preventDefault();
-        console.log(login.email, login.password);
-        setLogin({ email: '', password: '' });
+
+
+        console.log(login);
+
+        const response = await postApiService(
+			endPoints.ADMIN_SIGIN,
+			login
+		);
+
+        console.log(response)
+        
+        if (response.data.success) {
+            authTokenAdmin = response.data.authToken;
+			localStorage.setItem("authTokenAdmin", authTokenAdmin);
+            
+        }
+
+
+        setLogin({ email: '', password1: '' });
         navigate('/home');
     }
     return (
@@ -33,7 +60,7 @@ const AdminLoginForm = () => {
                     {/* email end */}
                     {/* password start */}
                     <div className="form-floating mb-3" >
-                        <input type="password" name="password" className="form-control" id="floatingInput password" placeholder="****" value={login.password} onChange={HandleInput} />
+                        <input type="password" name="password1" className="form-control" id="floatingInput password" placeholder="****" value={login.password1} onChange={HandleInput} />
                         <label htmlFor="floatingInput">Password</label>
                     </div>
                     {/* password end */}

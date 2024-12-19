@@ -1,29 +1,22 @@
 import React, { useEffect, useState } from "react";
 import getApiService from "../../services/getApiService";
 import { endPoints } from "../../constants/urls/urls";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../../style/table.css";
 
 const AdmissionData = () => {
 	const [admission, setAdmission] = useState([]);
+	const navigate = useNavigate();
 
-	// const authTokenAdmin = localStorage.getItem("authTokenAdmin");
-	// useEffect(() => {F
-	// 	if (!authTokenAdmin) {
-	// 		navigate("/auth/admin-login");
-	// 	}
-	// }, [authTokenAdmin]);
+	const authTokenAdmin = localStorage.getItem("authTokenAdmin");
+	useEffect(() => {
+		if (!authTokenAdmin) {
+			navigate("/auth/sign-in");
+		}
+	}, [authTokenAdmin]);
 
 	const fetchAllAdmissions = async () => {
 		try {
-			// Include the authToken in the request headers
-			// const config = {
-			// 	headers: {
-			// 		Authorization: `Bearer ${authTokenAdmin}`,
-			// 		"Content-Type": "application/json",
-			// 	},
-			// };
-
 			const response = await getApiService(
 				endPoints.ADMISSION_DATA
 				// config

@@ -38,6 +38,9 @@ const NavBar = () => {
 							</h2>
 						</div>
 					</div>
+					<div className=" btn btn-group">
+						<Link to="/home" className="page-links">Home</Link>
+					</div>
 					<div className="toggle-buttons">
 						<div className="btn-group">
 							<button
@@ -82,7 +85,7 @@ const NavBar = () => {
 									</p>
 								</Link>
 								<Link
-									to="/more-functions"
+									to="/add-functions"
 									className="page-links"
 								>
 									<p className="page-links-data px-3">
@@ -108,7 +111,40 @@ const NavBar = () => {
 									Toggle Dropdown
 								</span>
 							</button>
-							<ul className="dropdown-menu">...</ul>
+							<ul className="dropdown-menu">
+								<Link
+									to="/add-event"
+									className="page-links"
+								>
+									<p className="page-links-data px-3">
+										Add Event
+									</p>
+								</Link>
+								<Link
+									to="/add-student"
+									className="page-links"
+								>
+									<p className="page-links-data px-3">
+										Add Student
+									</p>
+								</Link>
+								<Link
+									to="/add-teacher"
+									className="page-links"
+								>
+									<p className="page-links-data px-3">
+										Add Teacher
+									</p>
+								</Link>
+								<Link
+									to="/add-functions"
+									className="page-links"
+								>
+									<p className="page-links-data px-3">
+										More Functions...
+									</p>
+								</Link>
+							</ul>
 						</div>
 					</div>
 				</div>

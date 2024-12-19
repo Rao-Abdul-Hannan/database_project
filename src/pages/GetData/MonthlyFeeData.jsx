@@ -1,19 +1,20 @@
-import React, { useEffect, useState } from 'react'
-import getApiService from '../../services/getApiService';
-import { endPoints } from '../../constants/urls/urls';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import getApiService from "../../services/getApiService";
+import { endPoints } from "../../constants/urls/urls";
+import { Link, useNavigate } from "react-router-dom";
 
 const MonthlyFeeData = () => {
-  const [monthlyFee, setMonthlyFee] = useState([]);
+	const [monthlyFee, setMonthlyFee] = useState([]);
+	const navigate = useNavigate();
 
-  // const authTokenAdmin = localStorage.getItem("authTokenAdmin");
-  // useEffect(() => {F
-  // 	if (!authTokenAdmin) {
-  // 		navigate("/auth/admin-login");
-  // 	}
-  // }, [authTokenAdmin]);
+	const authTokenAdmin = localStorage.getItem("authTokenAdmin");
+	useEffect(() => {
+		if (!authTokenAdmin) {
+			navigate("/auth/sign-in");
+		}
+	}, [authTokenAdmin]);
 
-  const fetchMonthlyFee = async () => {
+	const fetchMonthlyFee = async () => {
 		try {
 			// Include the authToken in the request headers
 			// const config = {
@@ -33,12 +34,12 @@ const MonthlyFeeData = () => {
 			// Log any errors that occur during the fetch
 			console.log(error);
 		}
-  };
+	};
 
-  useEffect(() => {
+	useEffect(() => {
 		fetchMonthlyFee();
-  }, []);
-  return (
+	}, []);
+	return (
 		<>
 			<div className="table-main-body">
 				<div className="students-table-container">
@@ -57,7 +58,7 @@ const MonthlyFeeData = () => {
 						</thead>
 						<tbody>
 							{monthlyFee.map((monthlyFee) => (
-                <tr key={monthlyFee.fee_id}>
+								<tr key={monthlyFee.fee_id}>
 									<td>{monthlyFee.fee_id}</td>
 									<td>{monthlyFee.student_id}</td>
 									<td>{monthlyFee.fee_amount}</td>
@@ -93,7 +94,7 @@ const MonthlyFeeData = () => {
 				</div>
 			</div>
 		</>
-  );
-}
+	);
+};
 
-export default MonthlyFeeData
+export default MonthlyFeeData;

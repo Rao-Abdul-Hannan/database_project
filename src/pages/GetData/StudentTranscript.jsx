@@ -1,10 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { endPoints } from "../../constants/urls/urls";
 import getApiService from "../../services/getApiService";
-import { Link, useParams } from "react-router-dom";
-import '../../style/transcript.css'
+import { Link, useNavigate, useParams } from "react-router-dom";
+import "../../style/transcript.css";
 
 const StudentTranscript = () => {
+	const navigate = useNavigate();
+
+	const authTokenAdmin = localStorage.getItem("authTokenAdmin");
+	useEffect(() => {
+		if (!authTokenAdmin) {
+			navigate("/auth/sign-in");
+		}
+	}, [authTokenAdmin]);
+
 	const [studentTranscript, setStudentTranscript] = useState([]);
 	const [studentName, setStudentName] = useState("");
 
@@ -27,7 +36,7 @@ const StudentTranscript = () => {
 			);
 			if (response.data.success) {
 				setStudentTranscript(response.data.data);
-				console.log(studentTranscript[0].student_name)
+				console.log(studentTranscript[0].student_name);
 				if (studentTranscript.length > 0) {
 					setStudentName(studentTranscript[0].student_name);
 				}

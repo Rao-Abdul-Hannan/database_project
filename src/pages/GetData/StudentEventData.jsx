@@ -1,19 +1,20 @@
-import React, { useEffect, useState } from 'react'
-import getApiService from '../../services/getApiService';
-import { endPoints } from '../../constants/urls/urls';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import getApiService from "../../services/getApiService";
+import { endPoints } from "../../constants/urls/urls";
+import { Link, useNavigate } from "react-router-dom";
 
 const StudentEventData = () => {
-  const [studentEvent, setStudentEvent] = useState([]);
+	const [studentEvent, setStudentEvent] = useState([]);
+	const navigate = useNavigate();
 
-  // const authTokenAdmin = localStorage.getItem("authTokenAdmin");
-  // useEffect(() => {F
-  // 	if (!authTokenAdmin) {
-  // 		navigate("/auth/admin-login");
-  // 	}
-  // }, [authTokenAdmin]);
+	const authTokenAdmin = localStorage.getItem("authTokenAdmin");
+	useEffect(() => {
+		if (!authTokenAdmin) {
+			navigate("/auth/sign-in");
+		}
+	}, [authTokenAdmin]);
 
-  const fetchStudentEvents = async () => {
+	const fetchStudentEvents = async () => {
 		try {
 			// Include the authToken in the request headers
 			// const config = {
@@ -33,12 +34,12 @@ const StudentEventData = () => {
 			// Log any errors that occur during the fetch
 			console.log(error);
 		}
-  };
+	};
 
-  useEffect(() => {
+	useEffect(() => {
 		fetchStudentEvents();
-  }, []);
-  return (
+	}, []);
+	return (
 		<>
 			<div className="table-main-body">
 				<div className="students-table-container">
@@ -83,7 +84,7 @@ const StudentEventData = () => {
 				</div>
 			</div>
 		</>
-  );
-}
+	);
+};
 
-export default StudentEventData
+export default StudentEventData;

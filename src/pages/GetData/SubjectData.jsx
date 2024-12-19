@@ -1,19 +1,20 @@
-import React from 'react'
+import React from "react";
 import { useEffect, useState } from "react";
 import { endPoints } from "../../constants/urls/urls";
 import getApiService from "../../services/getApiService";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const SubjectData = () => {
-  const [subject, setSubject] = useState([]);
+	const [subject, setSubject] = useState([]);
+	const navigate = useNavigate();
 
-  // const authTokenAdmin = localStorage.getItem("authTokenAdmin");
-  // useEffect(() => {F
-  // 	if (!authTokenAdmin) {
-  // 		navigate("/auth/admin-login");
-  // 	}
-  // }, [authTokenAdmin]);
+	const authTokenAdmin = localStorage.getItem("authTokenAdmin");
+	useEffect(() => {
+		if (!authTokenAdmin) {
+			navigate("/auth/sign-in");
+		}
+	}, [authTokenAdmin]);
 
-  const fetchSubjects = async () => {
+	const fetchSubjects = async () => {
 		try {
 			// Include the authToken in the request headers
 			// const config = {
@@ -33,12 +34,12 @@ const SubjectData = () => {
 			// Log any errors that occur during the fetch
 			console.log(error);
 		}
-  };
+	};
 
-  useEffect(() => {
+	useEffect(() => {
 		fetchSubjects();
-  }, []);
-  return (
+	}, []);
+	return (
 		<>
 			<div className="table-main-body">
 				<div className="students-table-container">
@@ -75,7 +76,7 @@ const SubjectData = () => {
 				</div>
 			</div>
 		</>
-  );
-}
+	);
+};
 
-export default SubjectData
+export default SubjectData;

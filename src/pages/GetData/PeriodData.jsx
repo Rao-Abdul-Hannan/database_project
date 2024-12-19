@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
 import getApiService from "../../services/getApiService";
 import { endPoints } from "../../constants/urls/urls";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const PeriodData = () => {
 	const [period, setPeriod] = useState([]);
+	const navigate = useNavigate();
 
-	// const authTokenAdmin = localStorage.getItem("authTokenAdmin");
-	// useEffect(() => {F
-	// 	if (!authTokenAdmin) {
-	// 		navigate("/auth/admin-login");
-	// 	}
-	// }, [authTokenAdmin]);
+	const authTokenAdmin = localStorage.getItem("authTokenAdmin");
+		useEffect(() => {
+			if (!authTokenAdmin) {
+				navigate("/auth/sign-in");
+			}
+		}, [authTokenAdmin]);
 
 	const fetchPeriodData = async () => {
 		try {

@@ -1,12 +1,42 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../style/home.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import adminPicture from "../assets/Images/th.jpeg";
+import { useToast } from "@chakra-ui/react";
 
 const Home = () => {
 	const navigate = useNavigate();
+	const toast = useToast();
+	const hasShownToast = useRef(false);
+
+	const authTokenAdmin = localStorage.getItem("authTokenAdmin");
+
+	useEffect(() => {
+		if (!authTokenAdmin && !hasShownToast.current) {
+			toast({
+				title: "Sign in required",
+				description: "Admin must be signed in",
+				status: "error",
+				duration: 9000,
+				isClosable: true,
+			});
+			hasShownToast.current = true;
+			navigate("/auth/sign-in");
+		}
+	}, []);
+
 	const HandleSubmit = (e) => {
-		navigate("/auth/admin-login");
+		localStorage.removeItem("authTokenAdmin");
+		if (authTokenAdmin) {
+			toast({
+				title: "Signed Out",
+				description: "Successfully signed out",
+				status: "success",
+				duration: 9000,
+				isClosable: true,
+			});
+		}
+		navigate("/auth/sign-in");
 	};
 	return (
 		<>

@@ -2,17 +2,18 @@ import React, { useEffect, useState } from "react";
 import getApiService from "../../services/getApiService";
 import { endPoints } from "../../constants/urls/urls";
 import "../../style/table.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const StudentData = () => {
 	const [students, setStudents] = useState([]);
+	const navigate = useNavigate();
 
-	// const authTokenAdmin = localStorage.getItem("authTokenAdmin");
-	// useEffect(() => {
-	// 	if (!authTokenAdmin) {
-	// 		navigate("/auth/admin-login");
-	// 	}
-	// }, [authTokenAdmin]);
+	const authTokenAdmin = localStorage.getItem("authTokenAdmin");
+		useEffect(() => {
+			if (!authTokenAdmin) {
+				navigate("/auth/sign-in");
+			}
+		}, [authTokenAdmin]);
 
 	const fetchAllStudents = async () => {
 		try {

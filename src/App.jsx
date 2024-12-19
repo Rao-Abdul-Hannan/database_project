@@ -9,8 +9,8 @@ import ClassRoomData from "./pages/GetData/ClassRoomData";
 import SpecificStudentData from "./pages/GetData/SpecificStudentData";
 import SpecificTeacherData from "./pages/GetData/SpecificTeacherData";
 import StudentData from "./pages/GetData/StudentData";
-import AdminLoginForm from "./views/forms/adminLoginForm";
-import AdminSignUpForm from "./views/forms/adminSignUpForm";
+import AdminLoginForm from "./views/forms/AdminLoginForm";
+import AdminSignUpForm from "./views/forms/AdminSignUpForm";
 import MonthlyFeeData from "./pages/GetData/MonthlyFeeData";
 import AttendanceData from "./pages/GetData/AttendanceData";
 import EventsData from "./pages/GetData/EventsData";
@@ -24,11 +24,15 @@ import SubjectData from "./pages/GetData/SubjectData";
 import SectionData from "./pages/GetData/SectionData";
 import SearchStudent from "./views/forms/SearchStudent";
 import AdmissionData from "./pages/GetData/AdmissionData";
-import MoreFunctions from "./pages/MoreFunctions";
+import AddFunctions from "./pages/AddFunctions";
 import StudentTranscript from "./pages/GetData/StudentTranscript";
 import StudentCourses from "./pages/GetData/StudentCourses";
 import TeacherTeachingSections from "./pages/GetData/TeacherTeachingSections";
 import StudentParticipations from "./pages/GetData/StudentParticipations";
+import CreateFunctions from "./pages/CreateFunctions";
+import AddTeacher from "./pages/AddData/AddTeacher";
+import AddStudent from "./pages/AddData/AddStudent";
+import AddEvent from "./pages/AddData/AddEvent";
 
 function App() {
 	return (
@@ -40,7 +44,7 @@ function App() {
 					element={<AdminSignUpForm />}
 				/>
 				<Route
-					path="/auth/admin-login"
+					path="/auth/sign-in"
 					element={<AdminLoginForm />}
 				/>
 				<Route
@@ -136,8 +140,24 @@ function App() {
 					element={<StudentParticipations />}
 				/>
 				<Route
-					path="/more-functions"
-					element={<MoreFunctions />}
+					path="/add-teacher"
+					element={<AddTeacher />}
+				/>
+				<Route
+					path="/add-student"
+					element={<AddStudent />}
+				/>
+				<Route
+					path="/add-event"
+					element={<AddEvent />}
+				/>
+				<Route
+					path="/add-functions"
+					element={<AddFunctions />}
+				/>
+				<Route
+					path="/create-functions"
+					element={<CreateFunctions />}
 				/>
 				<Route
 					path="*"

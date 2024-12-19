@@ -25,6 +25,9 @@ export const endPoints = {
 	STUDENT_COURSES: `/student-courses`,
 	STUDENT_PARTICIPATION: `/student-participations`,
 	TEACHER_SECTIONS: `/teacher-teaching-sections`,
+	ADD_STUDENT: "/add-student",
+	ADD_TEACHER: "/add-teacher",
+	ADD_EVENT: "/add-event",
 	ADMIN_SIGNUP: `/auth/sign-up`,
-	ADMIN_LOGIN: `/auth/login`
+	ADMIN_SIGIN: `/auth/sign-in`,
 };

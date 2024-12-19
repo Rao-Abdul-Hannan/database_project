@@ -1,11 +1,19 @@
 import React, { useEffect, useState } from "react";
 import getApiService from "../../services/getApiService";
 import { endPoints } from "../../constants/urls/urls";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "../../style/table.css";
 
-
 const TeacherTeachingSections = () => {
+	const navigate = useNavigate();
+
+	const authTokenAdmin = localStorage.getItem("authTokenAdmin");
+	useEffect(() => {
+		if (!authTokenAdmin) {
+			navigate("/auth/sign-in");
+		}
+	}, [authTokenAdmin]);
+
 	const [teachingSections, setTeachingSections] = useState([]);
 	const [teacherName, setTeacherName] = useState("");
 
@@ -29,7 +37,6 @@ const TeacherTeachingSections = () => {
 			if (response.data.success) {
 				setTeachingSections(response.data.data);
 				if (teachingSections.length > 0) {
-				
 					setTeacherName(
 						teachingSections[0].teacher_first_name +
 							" " +

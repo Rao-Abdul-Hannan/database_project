@@ -1,10 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { endPoints } from "../../constants/urls/urls";
 import getApiService from "../../services/getApiService";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import "../../style/transcript.css";
 
 const StudentCourses = () => {
+	const navigate = useNavigate();
+
+	const authTokenAdmin = localStorage.getItem("authTokenAdmin");
+		useEffect(() => {
+			if (!authTokenAdmin) {
+				navigate("/auth/sign-in");
+			}
+		}, [authTokenAdmin]);
+
 	const [studentCourses, setStudentCourses] = useState([]);
 	const [studentName, setStudentName] = useState("");
 

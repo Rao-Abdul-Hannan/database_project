@@ -1,11 +1,20 @@
 import React, { useEffect, useState } from "react";
 import getApiService from "../../services/getApiService";
 import { endPoints } from "../../constants/urls/urls";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import "../../style/form.css";
 import teacherImg from "../../assets/Images/th.jpeg";
 
 const SpecificTeacherData = () => {
+	const navigate = useNavigate();
+
+	const authTokenAdmin = localStorage.getItem("authTokenAdmin");
+		useEffect(() => {
+			if (!authTokenAdmin) {
+				navigate("/auth/sign-in");
+			}
+		}, [authTokenAdmin]);
+
 	const [teacher, setTeacher] = useState({});
 	// const teacherId = location.state?.id;
 	const teacherId = useParams();
