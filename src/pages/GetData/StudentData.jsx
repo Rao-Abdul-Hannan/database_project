@@ -1,19 +1,31 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import getApiService from "../../services/getApiService";
 import { endPoints } from "../../constants/urls/urls";
 import "../../style/table.css";
 import { Link, useNavigate } from "react-router-dom";
+import { Toast, useToast } from "@chakra-ui/react";
 
 const StudentData = () => {
 	const [students, setStudents] = useState([]);
 	const navigate = useNavigate();
+	const hasShownToast = useRef(false);
+	const toast = useToast()
 
 	const authTokenAdmin = localStorage.getItem("authTokenAdmin");
+	
 		useEffect(() => {
-			if (!authTokenAdmin) {
+			if (!authTokenAdmin && !hasShownToast.current) {
+				toast({
+					title: "Sign in required",
+					description: "Admin must be signed in",
+					status: "error",
+					duration: 9000,
+					isClosable: true,
+				});
+				hasShownToast.current = true;
 				navigate("/auth/sign-in");
 			}
-		}, [authTokenAdmin]);
+		}, []);
 
 	const fetchAllStudents = async () => {
 		try {

@@ -33,6 +33,16 @@ import CreateFunctions from "./pages/CreateFunctions";
 import AddTeacher from "./pages/AddData/AddTeacher";
 import AddStudent from "./pages/AddData/AddStudent";
 import AddEvent from "./pages/AddData/AddEvent";
+import UpdateFunctions from "./pages/UpdateFunctions";
+import DeleteFunctions from "./pages/DeleteFunctions";
+import DeleteTeacher from "./pages/DeleteData/DeleteTeacher";
+import DeleteStudent from "./pages/DeleteData/DeleteStudent";
+import DeleteEvent from "./pages/DeleteData/DeleteEvent";
+import UpdateEvent from "./pages/UpdateData/UpdateEvent";
+import UpdateTeacher from "./pages/UpdateData/UpdateTeacher";
+import UpdateStudent from "./pages/UpdateData/UpdateStudent";
+import Update from "./views/forms/Update";
+import Delete from "./views/forms/Delete";
 
 function App() {
 	return (
@@ -66,6 +76,14 @@ function App() {
 				<Route
 					path="/search"
 					element={<SearchStudent />}
+				/>
+				<Route
+					path="/update-search"
+					element={<Update />}
+				/>
+				<Route
+					path="/delete-search"
+					element={<Delete />}
 				/>
 				<Route
 					path="/specific-student-data/:id"
@@ -152,12 +170,44 @@ function App() {
 					element={<AddEvent />}
 				/>
 				<Route
+					path="/update-student/:id"
+					element={<UpdateStudent />}
+				/>
+				<Route
+					path="/update-teacher/:id"
+					element={<UpdateTeacher />}
+				/>
+				<Route
+					path="/update-event/:id"
+					element={<UpdateEvent />}
+				/>
+				<Route
+					path="/delete-event/:id"
+					element={<DeleteEvent />}
+				/>
+				<Route
+					path="/delete-student/:id"
+					element={<DeleteStudent />}
+				/>
+				<Route
+					path="/delete-teacher/:id"
+					element={<DeleteTeacher />}
+				/>
+				<Route
 					path="/add-functions"
 					element={<AddFunctions />}
 				/>
 				<Route
 					path="/create-functions"
 					element={<CreateFunctions />}
+				/>
+				<Route
+					path="/update-functions"
+					element={<UpdateFunctions />}
+				/>
+				<Route
+					path="/delete-functions"
+					element={<DeleteFunctions />}
 				/>
 				<Route
 					path="*"

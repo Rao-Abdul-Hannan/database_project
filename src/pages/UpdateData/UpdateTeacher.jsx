@@ -1,12 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
 import "../../style/adminForm.css";
-import { endPoints } from "../../constants/urls/urls";
 import postApiService from "../../services/postApiService";
+import { endPoints } from "../../constants/urls/urls";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 
-const AddStudent = () => {
+const UpdateTeacher = () => {
 	const navigate = useNavigate();
+
+    const eventId = useParams();
+	const id = eventId.id;
 
 	const toast = useToast();
 	const hasShownToast = useRef(false);
@@ -28,15 +31,17 @@ const AddStudent = () => {
 	}, []);
 
 	const [formData, setFormData] = useState({
-		student_id: "",
-		s_first_name: "",
-		s_middle_name: "",
-		s_last_name: "",
-		s_address: "",
-		section_id: "",
-		date_of_birth: "",
+		t_id: "",
+		FirstName: "",
+		LastName: "",
+		DateOfBirth: "",
 		Gender: "",
+		Email: "",
+		PhoneNumber: "",
+		Address: "",
+		Salary: "",
 		Status: "",
+		DateOfJoining: "",
 	});
 
 	const handleInput = (e) => {
@@ -49,13 +54,13 @@ const AddStudent = () => {
 
 		try {
 			const response = await postApiService(
-				endPoints.ADD_STUDENT,
+				endPoints.ADD_TEACHER,
 				formData
 			);
 			if (response.data.success) {
 				toast({
 					title: "Submitted",
-					description: "Student Added",
+					description: "Teacher Added",
 					status: "success",
 					duration: 9000,
 					isClosable: true,
@@ -73,18 +78,19 @@ const AddStudent = () => {
 		}
 
 		setFormData({
-			student_id: "",
-			s_first_name: "",
-			s_middle_name: "",
-			s_last_name: "",
-			s_address: "",
-			section_id: "",
-			date_of_birth: "",
+			t_id: "",
+			FirstName: "",
+			LastName: "",
+			DateOfBirth: "",
 			Gender: "",
+			Email: "",
+			PhoneNumber: "",
+			Address: "",
+			Salary: "",
 			Status: "",
+			DateOfJoining: "",
 		});
 	};
-
 	return (
 		<>
 			<div className="new-student">
@@ -93,92 +99,53 @@ const AddStudent = () => {
 					onSubmit={handleSubmit}
 					className="login-form py-5"
 				>
-					{/* Student ID */}
+					{/* ID */}
 					<div className="form-floating mb-3 mx-5">
 						<input
 							type="number"
-							name="student_id"
+							name="t_id"
 							className="form-control"
-							id="floatingInput student_id"
-							placeholder="0"
-							value={formData.student_id}
+							id="floatingInput t_id"
+							placeholder="100"
+							value={formData.t_id}
 							onChange={handleInput}
 						/>
-						<label htmlFor="floatingInput">Student ID</label>
+						<label htmlFor="floatingInput">Teacher ID</label>
 					</div>
 					{/* First Name */}
 					<div className="form-floating mb-3 mx-5">
 						<input
 							type="text"
-							name="s_first_name"
+							name="FirstName"
 							className="form-control"
-							id="floatingInput s_first_name"
-							placeholder="FIrst Name"
-							value={formData.s_first_name}
+							id="floatingInput FirstName"
+							placeholder="First Name"
+							value={formData.FirstName}
 							onChange={handleInput}
 						/>
 						<label htmlFor="floatingInput">First Name</label>
-					</div>
-					{/* Middle Name */}
-					<div className="form-floating mb-3 mx-5">
-						<input
-							type="text"
-							name="s_middle_name"
-							className="form-control"
-							id="floatingInput s_middle_name"
-							placeholder="Middle Name"
-							value={formData.s_middle_name}
-							onChange={handleInput}
-						/>
-						<label htmlFor="floatingInput">Middle Name</label>
 					</div>
 					{/* Last Name */}
 					<div className="form-floating mb-3 mx-5">
 						<input
 							type="text"
-							name="s_last_name"
+							name="LastName"
 							className="form-control"
-							id="floatingInput s_last_name"
+							id="floatingInput LastName"
 							placeholder="Last Name"
-							value={formData.s_last_name}
+							value={formData.LastName}
 							onChange={handleInput}
 						/>
 						<label htmlFor="floatingInput">Last Name</label>
-					</div>
-					{/* Address */}
-					<div className="form-floating mb-3 mx-5">
-						<input
-							type="text"
-							name="s_address"
-							className="form-control"
-							id="floatingInput s_address"
-							placeholder="House No. 45, Gulberg, Lahore"
-							value={formData.s_address}
-							onChange={handleInput}
-						/>
-						<label htmlFor="floatingInput">Address</label>
-					</div>
-					{/* Section ID */}
-					<div className="form-floating mb-3 mx-5">
-						<input
-							type="number"
-							name="section_id"
-							className="form-control"
-							id="floatingInput section_id"
-							placeholder="2"
-							value={formData.section_id}
-							onChange={handleInput}
-						/>
-						<label htmlFor="floatingInput">Section ID</label>
 					</div>
 					{/* Date of Birth */}
 					<div className="form-floating mb-3 mx-5">
 						<input
 							type="date"
-							name="date_of_birth"
+							name="DateOfBirth"
 							className="form-control"
-							id="floatingInput date_of_birth"
-							value={formData.date_of_birth}
+							id="floatingInput DateOfBirth"
+							value={formData.DateOfBirth}
 							onChange={handleInput}
 						/>
 						<label htmlFor="floatingInput">Date of Birth</label>
@@ -199,6 +166,58 @@ const AddStudent = () => {
 						</select>
 						<label htmlFor="floatingInput">Gender</label>
 					</div>
+					{/* Email */}
+					<div className="form-floating mb-3 mx-5">
+						<input
+							type="email"
+							name="Email"
+							className="form-control"
+							id="floatingInput Email"
+							placeholder="name@example.com"
+							value={formData.Email}
+							onChange={handleInput}
+						/>
+						<label htmlFor="floatingInput">Email Address</label>
+					</div>
+					{/* Phone Number */}
+					<div className="form-floating mb-3 mx-5">
+						<input
+							type="text"
+							name="PhoneNumber"
+							className="form-control"
+							id="floatingInput PhoneNumber"
+							placeholder="+923001234567"
+							value={formData.PhoneNumber}
+							onChange={handleInput}
+						/>
+						<label htmlFor="floatingInput">Phone Number</label>
+					</div>
+					{/* Address */}
+					<div className="form-floating mb-3 mx-5">
+						<input
+							type="text"
+							name="Address"
+							className="form-control"
+							id="floatingInput Address"
+							placeholder="123 Main Street"
+							value={formData.Address}
+							onChange={handleInput}
+						/>
+						<label htmlFor="floatingInput">Address</label>
+					</div>
+					{/* Salary */}
+					<div className="form-floating mb-3 mx-5">
+						<input
+							type="number"
+							name="Salary"
+							className="form-control"
+							id="floatingInput Salary"
+							placeholder="75000"
+							value={formData.Salary}
+							onChange={handleInput}
+						/>
+						<label htmlFor="floatingInput">Salary</label>
+					</div>
 					{/* Status */}
 					<div className="form-floating mb-3 mx-5">
 						<select
@@ -210,18 +229,29 @@ const AddStudent = () => {
 						>
 							<option value="">Select Status</option>
 							<option value="Active">Active</option>
-							<option value="Graduate">Graduate</option>
-							<option value="Enroll">Enroll</option>
+							<option value="OnLeave">On-Leave</option>
+							<option value="Inactive">Retired</option>
 						</select>
 						<label htmlFor="floatingInput">Status</label>
 					</div>
-					{/* Submit Button */}
+					{/* Date of Joining */}
+					<div className="form-floating mb-3 mx-5">
+						<input
+							type="date"
+							name="DateOfJoining"
+							className="form-control"
+							id="floatingInput DateOfJoining"
+							value={formData.DateOfJoining}
+							onChange={handleInput}
+						/>
+						<label htmlFor="floatingInput">Date of Joining</label>
+					</div>
 					<div className="signUp-button">
 						<button
 							type="submit"
 							className="form-floating mb-3 mx-5 button-styling"
 						>
-							Add Student
+							Add Teacher
 						</button>
 					</div>
 				</form>
@@ -230,4 +260,4 @@ const AddStudent = () => {
 	);
 };
 
-export default AddStudent;
+export default UpdateTeacher;

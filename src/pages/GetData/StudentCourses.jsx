@@ -41,7 +41,6 @@ const StudentCourses = () => {
 				}
 			}
 		} catch (error) {
-			// Log any errors that occur during the fetch
 			console.log(error);
 		}
 	};
@@ -52,7 +51,7 @@ const StudentCourses = () => {
 	return (
 		<>
 			<div className="transcript-container">
-				<h2 style={{ paddingTop: 20, paddingBottom: 30 }}>
+				<h2>
 					<strong>Subjects for:</strong>
 					{studentName}
 				</h2>
@@ -60,7 +59,7 @@ const StudentCourses = () => {
 					{studentCourses.map((item, index) => (
 						<div
 							key={index}
-							className='card pass'
+							className="card pass"
 						>
 							<h3>{item.subject_name}</h3>
 						</div>

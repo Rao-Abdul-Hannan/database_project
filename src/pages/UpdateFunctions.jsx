@@ -2,27 +2,27 @@ import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../style/MoreFunctions.css";
 
-const CreateFunctions = () => {
+const UpdateFunctions = () => {
 	const navigate = useNavigate();
 
 	const authTokenAdmin = localStorage.getItem("authTokenAdmin");
-		useEffect(() => {
-			if (!authTokenAdmin) {
-				navigate("/auth/sign-in");
-			}
-		}, [authTokenAdmin]);
+	useEffect(() => {
+		if (!authTokenAdmin) {
+			navigate("/auth/sign-in");
+		}
+	}, [authTokenAdmin]);
 
 	const links = [
-		{ path: "/add-teacher", label: "Add Teacher" },
-		{ path: "/add-student", label: "Add Student" },
-		{ path: "/add-event", label: "Add Event" }
+		{ path: "/update-delete-search", label: "Update Teacher" },
+		{ path: "/update-delete-search", label: "Update Student" },
+		{ path: "/update-delete-search", label: "Update Event" },
 	];
 
 	return (
 		<>
 			<div className="functions">
 				<div className="more-functions">
-					<h2 className="title">Add Data</h2>
+					<h2 className="title">Update Data</h2>
 					<div className="links-container">
 						{links.map((link, index) => (
 							<Link
@@ -40,4 +40,4 @@ const CreateFunctions = () => {
 	);
 };
 
-export default CreateFunctions;
+export default UpdateFunctions;

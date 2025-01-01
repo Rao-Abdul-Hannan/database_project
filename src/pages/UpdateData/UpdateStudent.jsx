@@ -5,8 +5,11 @@ import postApiService from "../../services/postApiService";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 
-const AddStudent = () => {
+const UpdateStudent = () => {
 	const navigate = useNavigate();
+
+    const studentId = useParams();
+	const id = studentId.id;
 
 	const toast = useToast();
 	const hasShownToast = useRef(false);
@@ -230,4 +233,4 @@ const AddStudent = () => {
 	);
 };
 
-export default AddStudent;
+export default UpdateStudent;

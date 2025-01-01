@@ -51,13 +51,13 @@ const AddTeacher = () => {
 
 		try {
 			const response = await postApiService(
-				endPoints.ADD_EVENT,
+				endPoints.ADD_TEACHER,
 				formData
 			);
 			if (response.data.success) {
 				toast({
 					title: "Submitted",
-					description: "Event Added",
+					description: "Teacher Added",
 					status: "success",
 					duration: 9000,
 					isClosable: true,

@@ -3,9 +3,11 @@ import { endPoints } from "../../constants/urls/urls";
 import getApiService from "../../services/getApiService";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import "../../style/transcript.css";
+import { useToast } from "@chakra-ui/react";
 
 const StudentTranscript = () => {
 	const navigate = useNavigate();
+	const toast = useToast();
 
 	const authTokenAdmin = localStorage.getItem("authTokenAdmin");
 	useEffect(() => {
@@ -35,6 +37,13 @@ const StudentTranscript = () => {
 				// config
 			);
 			if (response.data.success) {
+				toast({
+					title: "Student Transcript",
+					description: "Transcript shown successfully",
+					status: "success",
+					duration: 9000,
+					isClosable: true,
+				});
 				setStudentTranscript(response.data.data);
 				console.log(studentTranscript[0].student_name);
 				if (studentTranscript.length > 0) {
@@ -44,6 +53,13 @@ const StudentTranscript = () => {
 		} catch (error) {
 			// Log any errors that occur during the fetch
 			console.log(error);
+			toast({
+				title: "Error",
+				description: error.response.data.message,
+				status: "error",
+				duration: 9000,
+				isClosable: true,
+			});
 		}
 	};
 
@@ -53,7 +69,7 @@ const StudentTranscript = () => {
 	return (
 		<>
 			<div className="transcript-container">
-				<h2 style={{ paddingTop: 20, paddingBottom: 30 }}>
+				<h2>
 					<strong>Transcript for:</strong>
 					{studentName}
 				</h2>

@@ -1,28 +1,28 @@
-import React, { useEffect, useRef, useState } from "react";
-import "../../style/adminForm.css";
-import { useNavigate } from "react-router-dom";
-import { useToast } from "@chakra-ui/react";
+import { useToast } from '@chakra-ui/react';
+import React, { useEffect, useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
-const SearchStudent = () => {
+const Update = () => {
 	const navigate = useNavigate();
+
 	const toast = useToast();
 	const hasShownToast = useRef(false);
 
 	const authTokenAdmin = localStorage.getItem("authTokenAdmin");
-		
-			useEffect(() => {
-				if (!authTokenAdmin && !hasShownToast.current) {
-					toast({
-						title: "Sign in required",
-						description: "Admin must be signed in",
-						status: "error",
-						duration: 9000,
-						isClosable: true,
-					});
-					hasShownToast.current = true;
-					navigate("/auth/sign-in");
-				}
-			}, []);
+
+	useEffect(() => {
+		if (!authTokenAdmin && !hasShownToast.current) {
+			toast({
+				title: "Sign in required",
+				description: "Admin must be signed in",
+				status: "error",
+				duration: 9000,
+				isClosable: true,
+			});
+			hasShownToast.current = true;
+			navigate("/auth/sign-in");
+		}
+	}, []);
 
 	const [search, setSearch] = useState({
 		id: "",
@@ -37,29 +37,19 @@ const SearchStudent = () => {
 
 	const HandleSubmit = async (e) => {
 		e.preventDefault();
-		const { id } = search;
-		const { category } = search;
+		const { id, category } = search;
 
 		setSearch({
 			id: "",
 			category: "",
 		});
 
-		// console.log(category)
-		// console.log(marks)
-
 		if (category == "student") {
-			navigate(`/specific-student-data/${id}`);
+			navigate(`/update-student/${id}`);
 		} else if (category == "teacher") {
-			navigate(`/specific-teacher-data/${id}`);
-		} else if (category == "transcript") {
-			navigate(`/student-transcript/${id}`);
-		} else if (category == "studentCourses") {
-			navigate(`/student-courses/${id}`);
-		} else if (category == "teachingSections") {
-			navigate(`/teacher-teaching-sections/${id}`);
-		} else if (category == "eventParticipation") {
-			navigate(`/student-participations`);
+			navigate(`/update-teacher/${id}`);
+		} else if (category == "event") {
+			navigate(`/update-event/${id}`);
 		}
 	};
 	return (
@@ -92,17 +82,7 @@ const SearchStudent = () => {
 							<option value="">Select</option>
 							<option value="student">Student</option>
 							<option value="teacher">Teacher</option>
-							<option value="transcript">Transcript</option>
-							<option value="marksFilter">Marks Filter</option>
-							<option value="studentCourses">
-								Student Courses
-							</option>
-							<option value="eventParticipation">
-								Event Participation
-							</option>
-							<option value="teachingSections">
-								Teacher Teaching Sections
-							</option>
+							<option value="event">Event</option>
 						</select>
 						<label htmlFor="floatingSelect">Category</label>
 					</div>
@@ -122,4 +102,4 @@ const SearchStudent = () => {
 	);
 };
 
-export default SearchStudent;
+export default Update;

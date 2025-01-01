@@ -2,11 +2,14 @@ import React, { useEffect, useRef, useState } from "react";
 import "../../style/adminForm.css";
 import postApiService from "../../services/postApiService";
 import { endPoints } from "../../constants/urls/urls";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 
-const AddEvent = () => {
+const UpdateEvent = () => {
 	const navigate = useNavigate();
+
+    const eventId = useParams();
+	const id = eventId.id;
 
 	const toast = useToast();
 	const hasShownToast = useRef(false);
@@ -26,6 +29,7 @@ const AddEvent = () => {
 			navigate("/auth/sign-in");
 		}
 	}, []);
+    
 
 	const [formData, setFormData] = useState({
 		event_id: "",
@@ -46,14 +50,14 @@ const AddEvent = () => {
 		console.log(formData);
 
 		try {
-			const response = await postApiService(
+			const response = await getApiService(
 				endPoints.ADD_EVENT,
 				formData
 			);
 			if (response.data.success) {
 				toast({
-					title: "Submitted",
-					description: "Event Added",
+					title: "Updated",
+					description: "Event Updated successfully",
 					status: "success",
 					duration: 9000,
 					isClosable: true,
@@ -162,4 +166,4 @@ const AddEvent = () => {
 	);
 };
 
-export default AddEvent;
+export default UpdateEvent;

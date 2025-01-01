@@ -39,7 +39,12 @@ const NavBar = () => {
 						</div>
 					</div>
 					<div className=" btn btn-group">
-						<Link to="/home" className="page-links">Home</Link>
+						<Link
+							to="/home"
+							className="page-links"
+						>
+							Home
+						</Link>
 					</div>
 					<div className="toggle-buttons">
 						<div className="btn-group">
@@ -77,7 +82,7 @@ const NavBar = () => {
 									</p>
 								</Link>
 								<Link
-									to="/search-student"
+									to="/search"
 									className="page-links"
 								>
 									<p className="page-links-data px-3">
@@ -137,7 +142,111 @@ const NavBar = () => {
 									</p>
 								</Link>
 								<Link
-									to="/add-functions"
+									to="/create-functions"
+									className="page-links"
+								>
+									<p className="page-links-data px-3">
+										More Functions...
+									</p>
+								</Link>
+							</ul>
+						</div>
+						<div className="btn-group">
+							<button
+								className="btn btn-secondary btn-sm"
+								type="button"
+							>
+								Update Data
+							</button>
+							<button
+								type="button"
+								className="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split"
+								data-bs-toggle="dropdown"
+								aria-expanded="false"
+							>
+								<span className="visually-hidden">
+									Toggle Dropdown
+								</span>
+							</button>
+							<ul className="dropdown-menu">
+								<Link
+									to="/update-search"
+									className="page-links"
+								>
+									<p className="page-links-data px-3">
+										Update Event
+									</p>
+								</Link>
+								<Link
+									to="/update-search"
+									className="page-links"
+								>
+									<p className="page-links-data px-3">
+										Update Student
+									</p>
+								</Link>
+								<Link
+									to="/update-search"
+									className="page-links"
+								>
+									<p className="page-links-data px-3">
+										Update Teacher
+									</p>
+								</Link>
+								<Link
+									to="/update-functions"
+									className="page-links"
+								>
+									<p className="page-links-data px-3">
+										More Functions...
+									</p>
+								</Link>
+							</ul>
+						</div>
+						<div className="btn-group">
+							<button
+								className="btn btn-secondary btn-sm"
+								type="button"
+							>
+								Delete Data
+							</button>
+							<button
+								type="button"
+								className="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split"
+								data-bs-toggle="dropdown"
+								aria-expanded="false"
+							>
+								<span className="visually-hidden">
+									Toggle Dropdown
+								</span>
+							</button>
+							<ul className="dropdown-menu">
+								<Link
+									to="/delete-search"
+									className="page-links"
+								>
+									<p className="page-links-data px-3">
+										Delete Event
+									</p>
+								</Link>
+								<Link
+									to="/delete-search"
+									className="page-links"
+								>
+									<p className="page-links-data px-3">
+										Delete Student
+									</p>
+								</Link>
+								<Link
+									to="/delete-search"
+									className="page-links"
+								>
+									<p className="page-links-data px-3">
+										Delete Teacher
+									</p>
+								</Link>
+								<Link
+									to="/delete-functions"
 									className="page-links"
 								>
 									<p className="page-links-data px-3">
