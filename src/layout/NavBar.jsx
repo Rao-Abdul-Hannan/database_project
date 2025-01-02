@@ -11,7 +11,7 @@ const NavBar = () => {
 			setCharIndex((prevIndex) =>
 				prevIndex < text.length ? prevIndex + 1 : 0
 			);
-		}, 150); //every 100 milliseconds charIndex state gets incremented by 1 and string got sliced from (0, charIndex)
+		}, 150); //every 150 milliseconds charIndex state gets incremented by 1 and string got sliced from (0, charIndex)
 
 		return () => clearInterval(intervalId); // Cleanup the interval on component unmount
 	}, [text]);

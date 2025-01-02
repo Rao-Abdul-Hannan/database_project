@@ -52,10 +52,11 @@ const AddStudent = () => {
 				endPoints.ADD_STUDENT,
 				formData
 			);
+			console.log(response)
 			if (response.data.success) {
 				toast({
 					title: "Submitted",
-					description: "Student Added",
+					description: response.data.message,
 					status: "success",
 					duration: 9000,
 					isClosable: true,
@@ -93,7 +94,7 @@ const AddStudent = () => {
 					onSubmit={handleSubmit}
 					className="login-form py-5"
 				>
-					{/* Student ID */}
+					
 					<div className="form-floating mb-3 mx-5">
 						<input
 							type="number"
@@ -106,7 +107,7 @@ const AddStudent = () => {
 						/>
 						<label htmlFor="floatingInput">Student ID</label>
 					</div>
-					{/* First Name */}
+					
 					<div className="form-floating mb-3 mx-5">
 						<input
 							type="text"
@@ -119,7 +120,7 @@ const AddStudent = () => {
 						/>
 						<label htmlFor="floatingInput">First Name</label>
 					</div>
-					{/* Middle Name */}
+					
 					<div className="form-floating mb-3 mx-5">
 						<input
 							type="text"
@@ -132,7 +133,7 @@ const AddStudent = () => {
 						/>
 						<label htmlFor="floatingInput">Middle Name</label>
 					</div>
-					{/* Last Name */}
+					
 					<div className="form-floating mb-3 mx-5">
 						<input
 							type="text"
@@ -145,7 +146,7 @@ const AddStudent = () => {
 						/>
 						<label htmlFor="floatingInput">Last Name</label>
 					</div>
-					{/* Address */}
+					
 					<div className="form-floating mb-3 mx-5">
 						<input
 							type="text"
@@ -158,7 +159,7 @@ const AddStudent = () => {
 						/>
 						<label htmlFor="floatingInput">Address</label>
 					</div>
-					{/* Section ID */}
+					
 					<div className="form-floating mb-3 mx-5">
 						<input
 							type="number"
@@ -171,7 +172,7 @@ const AddStudent = () => {
 						/>
 						<label htmlFor="floatingInput">Section ID</label>
 					</div>
-					{/* Date of Birth */}
+					
 					<div className="form-floating mb-3 mx-5">
 						<input
 							type="date"
@@ -183,7 +184,7 @@ const AddStudent = () => {
 						/>
 						<label htmlFor="floatingInput">Date of Birth</label>
 					</div>
-					{/* Gender */}
+					
 					<div className="form-floating mb-3 mx-5">
 						<select
 							name="Gender"
@@ -199,7 +200,7 @@ const AddStudent = () => {
 						</select>
 						<label htmlFor="floatingInput">Gender</label>
 					</div>
-					{/* Status */}
+					
 					<div className="form-floating mb-3 mx-5">
 						<select
 							name="Status"
@@ -215,7 +216,7 @@ const AddStudent = () => {
 						</select>
 						<label htmlFor="floatingInput">Status</label>
 					</div>
-					{/* Submit Button */}
+					
 					<div className="signUp-button">
 						<button
 							type="submit"

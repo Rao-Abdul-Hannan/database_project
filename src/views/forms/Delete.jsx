@@ -1,6 +1,8 @@
 import { useToast } from "@chakra-ui/react";
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { endPoints } from "../../constants/urls/urls";
+import deleteApiService from "../../services/deleteApiService";
 
 const Delete = () => {
 	const navigate = useNavigate();
@@ -39,17 +41,54 @@ const Delete = () => {
 		e.preventDefault();
 		const { id, category } = search;
 
+		if (!id || !category) {
+			toast({
+				title: "Error",
+				description: "Please fill all fields",
+				status: "error",
+				duration: 9000,
+				isClosable: true,
+			});
+			return;
+		}
+
 		setSearch({
 			id: "",
 			category: "",
 		});
 
+
+		let endPoint = ""
+
 		if (category == "student") {
-			navigate(`/update-student/${id}`);
+			endPoint = `${endPoints.DELETE_STUDENT}/${id}`;
 		} else if (category == "teacher") {
-			navigate(`/update-teacher/${id}`);
+			endPoint = `${endPoints.DELETE_TEACHER}/${id}`;			
 		} else if (category == "event") {
-			navigate(`/update-event/${id}`);
+			endPoint = `${endPoints.DELETE_EVENT}/${id}`;
+		}
+
+		try {
+			const response = await deleteApiService(endPoint);
+			console.log(response)
+			if (response.data.success) {
+				toast({
+					title: "Deleted",
+					description: response.data.message,
+					status: "success",
+					duration: 9000,
+					isClosable: true,
+				});
+				navigate("/home");
+			}
+		} catch (error) {
+			toast({
+				title: "Error",
+				description: error.response.data.message,
+				status: "error",
+				duration: 9000,
+				isClosable: true,
+			});
 		}
 	};
 	return (
@@ -92,7 +131,7 @@ const Delete = () => {
 								type="submit"
 								className="form-floating mb-3 mx-5 button-styling"
 							>
-								Search
+								Delete
 							</button>
 						</div>
 					</div>

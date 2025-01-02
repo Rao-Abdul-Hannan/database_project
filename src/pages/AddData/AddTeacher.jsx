@@ -57,7 +57,7 @@ const AddTeacher = () => {
 			if (response.data.success) {
 				toast({
 					title: "Submitted",
-					description: "Teacher Added",
+					description: response.data.message,
 					status: "success",
 					duration: 9000,
 					isClosable: true,
@@ -96,7 +96,7 @@ const AddTeacher = () => {
 					onSubmit={handleSubmit}
 					className="login-form py-5"
 				>
-					{/* ID */}
+					
 					<div className="form-floating mb-3 mx-5">
 						<input
 							type="number"
@@ -109,7 +109,7 @@ const AddTeacher = () => {
 						/>
 						<label htmlFor="floatingInput">Teacher ID</label>
 					</div>
-					{/* First Name */}
+					
 					<div className="form-floating mb-3 mx-5">
 						<input
 							type="text"
@@ -122,7 +122,7 @@ const AddTeacher = () => {
 						/>
 						<label htmlFor="floatingInput">First Name</label>
 					</div>
-					{/* Last Name */}
+					
 					<div className="form-floating mb-3 mx-5">
 						<input
 							type="text"
@@ -135,7 +135,7 @@ const AddTeacher = () => {
 						/>
 						<label htmlFor="floatingInput">Last Name</label>
 					</div>
-					{/* Date of Birth */}
+					
 					<div className="form-floating mb-3 mx-5">
 						<input
 							type="date"
@@ -147,7 +147,7 @@ const AddTeacher = () => {
 						/>
 						<label htmlFor="floatingInput">Date of Birth</label>
 					</div>
-					{/* Gender */}
+					
 					<div className="form-floating mb-3 mx-5">
 						<select
 							name="Gender"
@@ -163,7 +163,7 @@ const AddTeacher = () => {
 						</select>
 						<label htmlFor="floatingInput">Gender</label>
 					</div>
-					{/* Email */}
+					
 					<div className="form-floating mb-3 mx-5">
 						<input
 							type="email"
@@ -176,7 +176,7 @@ const AddTeacher = () => {
 						/>
 						<label htmlFor="floatingInput">Email Address</label>
 					</div>
-					{/* Phone Number */}
+					
 					<div className="form-floating mb-3 mx-5">
 						<input
 							type="text"
@@ -189,7 +189,7 @@ const AddTeacher = () => {
 						/>
 						<label htmlFor="floatingInput">Phone Number</label>
 					</div>
-					{/* Address */}
+					
 					<div className="form-floating mb-3 mx-5">
 						<input
 							type="text"
@@ -202,7 +202,7 @@ const AddTeacher = () => {
 						/>
 						<label htmlFor="floatingInput">Address</label>
 					</div>
-					{/* Salary */}
+				
 					<div className="form-floating mb-3 mx-5">
 						<input
 							type="number"
@@ -215,7 +215,7 @@ const AddTeacher = () => {
 						/>
 						<label htmlFor="floatingInput">Salary</label>
 					</div>
-					{/* Status */}
+					
 					<div className="form-floating mb-3 mx-5">
 						<select
 							name="Status"
@@ -231,7 +231,7 @@ const AddTeacher = () => {
 						</select>
 						<label htmlFor="floatingInput">Status</label>
 					</div>
-					{/* Date of Joining */}
+					
 					<div className="form-floating mb-3 mx-5">
 						<input
 							type="date"

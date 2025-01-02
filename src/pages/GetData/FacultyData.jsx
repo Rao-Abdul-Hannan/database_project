@@ -3,10 +3,12 @@ import "../../style/table.css";
 import { endPoints } from "../../constants/urls/urls";
 import getApiService from "../../services/getApiService";
 import { Link, useNavigate } from "react-router-dom";
+import { useToast } from "@chakra-ui/react";
 
 const FacultyData = () => {
 	const [teachers, setTeachers] = useState([]);
 	const navigate = useNavigate();
+	const toast = useToast();
 
 	const authTokenAdmin = localStorage.getItem("authTokenAdmin");
 		useEffect(() => {
@@ -17,23 +19,19 @@ const FacultyData = () => {
 
 	const fetchAllTeachers = async () => {
 		try {
-			// Include the authToken in the request headers
-			// const config = {
-			// 	headers: {
-			// 		Authorization: `Bearer ${authTokenAdmin}`,
-			// 		"Content-Type": "application/json",
-			// 	},
-			// };
-
 			const response = await getApiService(
 				endPoints.ALL_TEACHERS
-				// config
 			);
 			console.log(response.data);
 			setTeachers(response.data.data);
 		} catch (error) {
-			// Log any errors that occur during the fetch
-			console.log(error);
+			toast({
+				title: "Error",
+				description: error.response.data.message,
+				status: "error",
+				duration: 9000,
+				isClosable: true,
+			});
 		}
 	};
 

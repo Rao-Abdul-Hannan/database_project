@@ -28,6 +28,12 @@ export const endPoints = {
 	ADD_STUDENT: "/add-student",
 	ADD_TEACHER: "/add-teacher",
 	ADD_EVENT: "/add-event",
+	DELETE_STUDENT: "/delete-student",
+	DELETE_TEACHER: "/delete-teacher",
+	DELETE_EVENT: "/delete-event",
+	UPDATE_STUDENT: "/update-student",
+	UPDATE_TEACHER: "/update-teacher",
+	UPDATE_EVENT: "/update-event",
 	ADMIN_SIGNUP: `/auth/sign-up`,
 	ADMIN_SIGIN: `/auth/sign-in`,
 };

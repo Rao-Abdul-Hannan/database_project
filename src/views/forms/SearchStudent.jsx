@@ -37,8 +37,18 @@ const SearchStudent = () => {
 
 	const HandleSubmit = async (e) => {
 		e.preventDefault();
-		const { id } = search;
-		const { category } = search;
+		const { id, category } = search;
+
+		if (!id || !category) {
+			toast({
+				title: "Error",
+				description: "Please fill all fields",
+				status: "error",
+				duration: 9000,
+				isClosable: true,
+			});
+			return;
+		}
 
 		setSearch({
 			id: "",

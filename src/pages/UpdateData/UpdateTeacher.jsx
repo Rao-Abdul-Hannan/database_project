@@ -1,15 +1,30 @@
 import React, { useEffect, useRef, useState } from "react";
 import "../../style/adminForm.css";
-import postApiService from "../../services/postApiService";
 import { endPoints } from "../../constants/urls/urls";
-import { useNavigate } from "react-router-dom";
+import postApiService from "../../services/postApiService";
+import { useNavigate, useParams } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
+import getApiService from "../../services/getApiService";
 
-const UpdateTeacher = () => {
+const UpdateStudent = () => {
 	const navigate = useNavigate();
 
-    const eventId = useParams();
-	const id = eventId.id;
+	const teacherId = useParams();
+	const id = teacherId.id;
+
+	const [formData, setFormData] = useState({
+		t_id: "",
+		FirstName: "",
+		LastName: "",
+		DateOfBirth: "",
+		Gender: "",
+		Email: "",
+		PhoneNumber: "",
+		Address: "",
+		Salary: "",
+		Status: "",
+		DateOfJoining: "",
+	});
 
 	const toast = useToast();
 	const hasShownToast = useRef(false);
@@ -30,19 +45,30 @@ const UpdateTeacher = () => {
 		}
 	}, []);
 
-	const [formData, setFormData] = useState({
-		t_id: "",
-		FirstName: "",
-		LastName: "",
-		DateOfBirth: "",
-		Gender: "",
-		Email: "",
-		PhoneNumber: "",
-		Address: "",
-		Salary: "",
-		Status: "",
-		DateOfJoining: "",
-	});
+	// get request
+	const fetchTeacher = async () => {
+		try {
+			const response = await getApiService(
+				`${endPoints.SPECIFIC_TEACHER}/${id}`
+				// config
+			);
+			console.log(response.data.data);
+			setFormData(response.data.data);
+		} catch (error) {
+			toast({
+				title: "Error",
+				description: error.response.data.message,
+				status: "error",
+				duration: 9000,
+				isClosable: true,
+			});
+			navigate("/update-search");
+		}
+	};
+
+	useEffect(() => {
+		fetchTeacher();
+	}, []);
 
 	const handleInput = (e) => {
 		const { name, value } = e.target;
@@ -54,20 +80,33 @@ const UpdateTeacher = () => {
 
 		try {
 			const response = await postApiService(
-				endPoints.ADD_TEACHER,
+				endPoints.UPDATE_TEACHER,
 				formData
 			);
 			if (response.data.success) {
 				toast({
-					title: "Submitted",
-					description: "Teacher Added",
+					title: "Success",
+					description: response.data.message,
 					status: "success",
 					duration: 9000,
 					isClosable: true,
 				});
+
+				setFormData({
+					t_id: "",
+					FirstName: "",
+					LastName: "",
+					DateOfBirth: "",
+					Gender: "",
+					Email: "",
+					PhoneNumber: "",
+					Address: "",
+					Salary: "",
+					Status: "",
+					DateOfJoining: "",
+				});
 			}
 		} catch (error) {
-			console.error(error.response);
 			toast({
 				title: "Error",
 				description: error.response.data.message,
@@ -76,21 +115,8 @@ const UpdateTeacher = () => {
 				isClosable: true,
 			});
 		}
-
-		setFormData({
-			t_id: "",
-			FirstName: "",
-			LastName: "",
-			DateOfBirth: "",
-			Gender: "",
-			Email: "",
-			PhoneNumber: "",
-			Address: "",
-			Salary: "",
-			Status: "",
-			DateOfJoining: "",
-		});
 	};
+
 	return (
 		<>
 			<div className="new-student">
@@ -109,6 +135,7 @@ const UpdateTeacher = () => {
 							placeholder="100"
 							value={formData.t_id}
 							onChange={handleInput}
+							readOnly
 						/>
 						<label htmlFor="floatingInput">Teacher ID</label>
 					</div>
@@ -251,7 +278,7 @@ const UpdateTeacher = () => {
 							type="submit"
 							className="form-floating mb-3 mx-5 button-styling"
 						>
-							Add Teacher
+							Update Teacher
 						</button>
 					</div>
 				</form>
@@ -260,4 +287,4 @@ const UpdateTeacher = () => {
 	);
 };
 
-export default UpdateTeacher;
+export default UpdateStudent;

@@ -13,9 +13,21 @@ const DeleteFunctions = () => {
 	}, [authTokenAdmin]);
 
 	const links = [
-		{ path: "/update-delete-search", label: "Delete Teacher" },
-		{ path: "/update-delete-search", label: "Delete Student" },
-		{ path: "/update-delete-search", label: "Delete Event" },
+		{ path: "/delete-search", label: "Delete Teacher" },
+		{ path: "/delete-search", label: "Delete Student" },
+		{ path: "/delete-search", label: "Delete Event" },
+		{ path: "/admission-data", label: "Admission Data" },
+		{ path: "/monthly-fee", label: "Monthly Fee Data" },
+		{ path: "/search", label: "Search Student" },
+		{ path: "/search", label: "Search Teacher" },
+		{ path: "/student-data", label: "Student Data" },
+		{ path: "/search", label: "Student Transcript" },
+		{ path: "/section-data", label: "Section Data" },
+		{ path: "/student-event-data", label: "Student Event Data" },
+		{ path: "/subject-data", label: "Subject Data" },
+		{ path: "/search", label: "Student Courses" },
+		{ path: "/search", label: "Teacher Teaching Sections" },
+		{ path: "/search", label: "Student's Event Participations" },
 	];
 
 	return (

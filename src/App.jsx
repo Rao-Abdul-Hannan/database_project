@@ -35,10 +35,6 @@ import AddStudent from "./pages/AddData/AddStudent";
 import AddEvent from "./pages/AddData/AddEvent";
 import UpdateFunctions from "./pages/UpdateFunctions";
 import DeleteFunctions from "./pages/DeleteFunctions";
-import DeleteTeacher from "./pages/DeleteData/DeleteTeacher";
-import DeleteStudent from "./pages/DeleteData/DeleteStudent";
-import DeleteEvent from "./pages/DeleteData/DeleteEvent";
-import UpdateEvent from "./pages/UpdateData/UpdateEvent";
 import UpdateTeacher from "./pages/UpdateData/UpdateTeacher";
 import UpdateStudent from "./pages/UpdateData/UpdateStudent";
 import Update from "./views/forms/Update";
@@ -176,22 +172,6 @@ function App() {
 				<Route
 					path="/update-teacher/:id"
 					element={<UpdateTeacher />}
-				/>
-				<Route
-					path="/update-event/:id"
-					element={<UpdateEvent />}
-				/>
-				<Route
-					path="/delete-event/:id"
-					element={<DeleteEvent />}
-				/>
-				<Route
-					path="/delete-student/:id"
-					element={<DeleteStudent />}
-				/>
-				<Route
-					path="/delete-teacher/:id"
-					element={<DeleteTeacher />}
 				/>
 				<Route
 					path="/add-functions"

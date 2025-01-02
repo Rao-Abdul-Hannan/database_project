@@ -39,15 +39,15 @@ const StudentTranscript = () => {
 			if (response.data.success) {
 				toast({
 					title: "Student Transcript",
-					description: "Transcript shown successfully",
+					description: response.data.message,
 					status: "success",
 					duration: 9000,
 					isClosable: true,
 				});
-				setStudentTranscript(response.data.data);
-				console.log(studentTranscript[0].student_name);
-				if (studentTranscript.length > 0) {
-					setStudentName(studentTranscript[0].student_name);
+				const transcriptData = response.data.data;
+				setStudentTranscript(transcriptData);
+				if (transcriptData.length > 0) {
+					setStudentName(transcriptData[0].student_name); // Use the response data directly
 				}
 			}
 		} catch (error) {
@@ -71,7 +71,7 @@ const StudentTranscript = () => {
 			<div className="transcript-container">
 				<h2>
 					<strong>Transcript for:</strong>
-					{studentName}
+					<u>{studentName}</u>
 				</h2>
 				<div className="transcript-cards">
 					{studentTranscript.map((item, index) => (

@@ -3,9 +3,11 @@ import getApiService from "../../services/getApiService";
 import { endPoints } from "../../constants/urls/urls";
 import { useNavigate, useParams } from "react-router-dom";
 import "../../style/table.css";
+import { useToast } from "@chakra-ui/react";
 
 const TeacherTeachingSections = () => {
 	const navigate = useNavigate();
+	const toast = useToast();
 
 	const authTokenAdmin = localStorage.getItem("authTokenAdmin");
 	useEffect(() => {
@@ -35,18 +37,31 @@ const TeacherTeachingSections = () => {
 				// config
 			);
 			if (response.data.success) {
-				setTeachingSections(response.data.data);
-				if (teachingSections.length > 0) {
+				toast({
+					title: "Teacher Sections",
+					description: response.data.message,
+					status: "success",
+					duration: 9000,
+					isClosable: true,
+				});
+				const teacherData = response.data.data;
+				setTeachingSections(teacherData);
+				if (teacherData.length > 0) {
 					setTeacherName(
-						teachingSections[0].teacher_first_name +
+						teacherData[0].teacher_first_name +
 							" " +
-							teachingSections[0].teacher_last_name
+							teacherData[0].teacher_last_name
 					);
 				}
 			}
 		} catch (error) {
-			// Log any errors that occur during the fetch
-			console.log(error);
+			toast({
+				title: "Error",
+				description: error.response.data.message,
+				status: "error",
+				duration: 9000,
+				isClosable: true,
+			});
 		}
 	};
 

@@ -4,9 +4,11 @@ import getApiService from "../../services/getApiService";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import studentImg from "../../assets/Images/th.jpeg";
 import "../../style/form.css";
+import { useToast } from "@chakra-ui/react";
 
 const SpecificStudentData = () => {
 	const navigate = useNavigate();
+	const toast = useToast();
 
 	const authTokenAdmin = localStorage.getItem("authTokenAdmin");
 		useEffect(() => {
@@ -22,23 +24,19 @@ const SpecificStudentData = () => {
 
 	const fetchStudent = async () => {
 		try {
-			// Include the authToken in the request headers
-			// const config = {
-			// 	headers: {
-			// 		Authorization: `Bearer ${authTokenAdmin}`,
-			// 		"Content-Type": "application/json",
-			// 	},
-			// };
-
 			const response = await getApiService(
 				`${endPoints.SPECIFIC_STUDENT}/${id}`
-				// config
 			);
 			console.log(response.data.data);
 			setStudent(response.data.data);
 		} catch (error) {
-			// Log any errors that occur during the fetch
-			console.log(error);
+			toast({
+				title: "Error",
+				description: error.response.data.message,
+				status: "error",
+				duration: 9000,
+				isClosable: true,
+			});
 		}
 	};
 

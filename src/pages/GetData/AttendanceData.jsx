@@ -3,10 +3,12 @@ import { endPoints } from "../../constants/urls/urls";
 import getApiService from "../../services/getApiService";
 import { Link, useNavigate } from "react-router-dom";
 import "../../style/table.css";
+import { useToast } from "@chakra-ui/react";
 
 const AttendanceData = () => {
 	const [attendance, setAttendance] = useState([]);
 	const navigate = useNavigate();
+	const toast = useToast();
 
 	const authTokenAdmin = localStorage.getItem("authTokenAdmin");
 		useEffect(() => {
@@ -17,23 +19,19 @@ const AttendanceData = () => {
 
 	const fetchAllAttendance = async () => {
 		try {
-			// Include the authToken in the request headers
-			// const config = {
-			// 	headers: {
-			// 		Authorization: `Bearer ${authTokenAdmin}`,
-			// 		"Content-Type": "application/json",
-			// 	},
-			// };
-
 			const response = await getApiService(
 				endPoints.ATTENDANCE_DATA
-				// config
 			);
 			console.log(response.data);
 			setAttendance(response.data.data);
 		} catch (error) {
-			// Log any errors that occur during the fetch
-			console.log(error);
+			toast({
+				title: "Error",
+				description: error.response.data.message,
+				status: "error",
+				duration: 9000,
+				isClosable: true,
+			});
 		}
 	};
 

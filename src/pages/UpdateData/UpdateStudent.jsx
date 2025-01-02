@@ -2,14 +2,27 @@ import React, { useEffect, useRef, useState } from "react";
 import "../../style/adminForm.css";
 import { endPoints } from "../../constants/urls/urls";
 import postApiService from "../../services/postApiService";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
+import getApiService from "../../services/getApiService";
 
 const UpdateStudent = () => {
 	const navigate = useNavigate();
 
-    const studentId = useParams();
+	const studentId = useParams();
 	const id = studentId.id;
+
+	const [formData, setFormData] = useState({
+		student_id: "",
+		s_first_name: "",
+		s_middle_name: "",
+		s_last_name: "",
+		s_address: "",
+		section_id: "",
+		date_of_birth: "",
+		Gender: "",
+		Status: "",
+	});
 
 	const toast = useToast();
 	const hasShownToast = useRef(false);
@@ -30,17 +43,40 @@ const UpdateStudent = () => {
 		}
 	}, []);
 
-	const [formData, setFormData] = useState({
-		student_id: "",
-		s_first_name: "",
-		s_middle_name: "",
-		s_last_name: "",
-		s_address: "",
-		section_id: "",
-		date_of_birth: "",
-		Gender: "",
-		Status: "",
-	});
+	// get request
+	const fetchStudent = async () => {
+		try {
+			// Include the authToken in the request headers
+			// const config = {
+			// 	headers: {
+			// 		Authorization: `Bearer ${authTokenAdmin}`,
+			// 		"Content-Type": "application/json",
+			// 	},
+			// };
+
+			const response = await getApiService(
+				`${endPoints.SPECIFIC_STUDENT}/${id}`
+				// config
+			);
+			console.log(response.data.data);
+			setFormData(response.data.data);
+		} catch (error) {
+			toast({
+				title: "Error",
+				description: error.response.data.message,
+				status: "error",
+				duration: 9000,
+				isClosable: true,
+			});
+			navigate("/update-search")
+		}
+	};
+
+
+
+	useEffect(() => {
+			fetchStudent();
+		}, []);
 
 	const handleInput = (e) => {
 		const { name, value } = e.target;
@@ -52,20 +88,31 @@ const UpdateStudent = () => {
 
 		try {
 			const response = await postApiService(
-				endPoints.ADD_STUDENT,
+				endPoints.UPDATE_STUDENT,
 				formData
 			);
 			if (response.data.success) {
 				toast({
-					title: "Submitted",
-					description: "Student Added",
+					title: "Success",
+					description: response.data.message,
 					status: "success",
 					duration: 9000,
 					isClosable: true,
 				});
+
+				setFormData({
+					student_id: "",
+					s_first_name: "",
+					s_middle_name: "",
+					s_last_name: "",
+					s_address: "",
+					section_id: "",
+					date_of_birth: "",
+					Gender: "",
+					Status: "",
+				});
 			}
 		} catch (error) {
-			console.error(error.response);
 			toast({
 				title: "Error",
 				description: error.response.data.message,
@@ -74,18 +121,6 @@ const UpdateStudent = () => {
 				isClosable: true,
 			});
 		}
-
-		setFormData({
-			student_id: "",
-			s_first_name: "",
-			s_middle_name: "",
-			s_last_name: "",
-			s_address: "",
-			section_id: "",
-			date_of_birth: "",
-			Gender: "",
-			Status: "",
-		});
 	};
 
 	return (
@@ -106,6 +141,7 @@ const UpdateStudent = () => {
 							placeholder="0"
 							value={formData.student_id}
 							onChange={handleInput}
+							readOnly
 						/>
 						<label htmlFor="floatingInput">Student ID</label>
 					</div>
@@ -224,7 +260,7 @@ const UpdateStudent = () => {
 							type="submit"
 							className="form-floating mb-3 mx-5 button-styling"
 						>
-							Add Student
+							Update Student
 						</button>
 					</div>
 				</form>

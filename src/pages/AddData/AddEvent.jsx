@@ -53,7 +53,7 @@ const AddEvent = () => {
 			if (response.data.success) {
 				toast({
 					title: "Submitted",
-					description: "Event Added",
+					description: response.data.message,
 					status: "success",
 					duration: 9000,
 					isClosable: true,
@@ -86,7 +86,7 @@ const AddEvent = () => {
 					onSubmit={handleSubmit}
 					className="login-form py-5"
 				>
-					{/* ID */}
+
 					<div className="form-floating mb-3 mx-5">
 						<input
 							type="number"
@@ -99,7 +99,7 @@ const AddEvent = () => {
 						/>
 						<label htmlFor="floatingInput">Event ID</label>
 					</div>
-					{/* First Name */}
+					
 					<div className="form-floating mb-3 mx-5">
 						<input
 							type="text"
@@ -112,7 +112,7 @@ const AddEvent = () => {
 						/>
 						<label htmlFor="floatingInput">Event Name</label>
 					</div>
-					{/* Date of Birth */}
+					
 					<div className="form-floating mb-3 mx-5">
 						<input
 							type="date"
@@ -135,7 +135,7 @@ const AddEvent = () => {
 						/>
 						<label htmlFor="floatingInput">Ending Date</label>
 					</div>
-					{/* Email */}
+					
 					<div className="form-floating mb-3 mx-5">
 						<input
 							type="text"

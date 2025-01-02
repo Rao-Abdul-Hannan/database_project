@@ -37,7 +37,7 @@ const AdminLoginForm = () => {
 			if (response.data.success) {
                 toast({
 					title: "Signed in",
-					description: "Successfully signed in",
+					description: response.data.message,
 					status: "success",
 					duration: 9000,
 					isClosable: true,
@@ -56,8 +56,6 @@ const AdminLoginForm = () => {
 				isClosable: true,
 			});
 		}
-
-		console.log(response);
 
 		setLogin({ email: "", password1: "" });
 		

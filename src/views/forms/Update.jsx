@@ -39,6 +39,17 @@ const Update = () => {
 		e.preventDefault();
 		const { id, category } = search;
 
+		if (!id || !category) {
+			toast({
+				title: "Error",
+				description: "Please fill all fields",
+				status: "error",
+				duration: 9000,
+				isClosable: true,
+			});
+			return;
+		}
+
 		setSearch({
 			id: "",
 			category: "",
@@ -48,8 +59,6 @@ const Update = () => {
 			navigate(`/update-student/${id}`);
 		} else if (category == "teacher") {
 			navigate(`/update-teacher/${id}`);
-		} else if (category == "event") {
-			navigate(`/update-event/${id}`);
 		}
 	};
 	return (
@@ -82,7 +91,6 @@ const Update = () => {
 							<option value="">Select</option>
 							<option value="student">Student</option>
 							<option value="teacher">Teacher</option>
-							<option value="event">Event</option>
 						</select>
 						<label htmlFor="floatingSelect">Category</label>
 					</div>
